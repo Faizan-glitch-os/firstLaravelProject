@@ -4,11 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ExampleController;
 
+//show page based on auth
+Route::get('/',[UserController::class, 'showCorrectHomepage']);
 
-Route::get('/',[ExampleController::class, 'homepage']);
-
-Route::get('/about', function (){
-    return '<a href="/"><h1>Back to the homepage</h1></a>';
-});
-
+//register new user
 Route::post('/registerNewUser', [UserController::class, 'registerNewUser']);
+
+//login user
+Route::post('/login', [UserController::class, 'login']);
+
+//logout user
+Route::post('/logout', [UserController::class, 'logout']);
